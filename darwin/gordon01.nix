@@ -30,13 +30,7 @@ let
     # The platform the configuration will be used on.
     nixpkgs.hostPlatform = "aarch64-darwin";
 
-    # home-manager.users.alex = self.homeConfigurations.gordon01;
-    home-manager.users.alex = {
-      imports = [
-        self.homeModules.common
-        self.homeModules.dev
-      ];
-    };
+    home-manager.users.alex = self.homeModules.gordon01;
 
     users.users.alex = {
       name = "alex";

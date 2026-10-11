@@ -2,17 +2,22 @@
 {
   flake.homeConfigurations.gordon01 = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages.aarch64-darwin;
-    modules = [
-      self.homeModules.common
-      self.homeModules.dev
-    ];
+    modules = [ self.homeModules.gordon01 ];
   };
 
   flake.homeModules = {
     common = { ... }: {
       home.stateVersion = "26.11";
-      # home.username = "alex";
-      # home.homeDirectory = /Users/alex;
+    };
+
+    gordon01 = { lib, ... }: {
+      imports = [
+        self.homeModules.common
+        self.homeModules.dev
+      ];
+
+      home.username = lib.mkDefault "alex";
+      home.homeDirectory = lib.mkDefault "/Users/alex";
     };
 
     dev = { pkgs, ... }: {
