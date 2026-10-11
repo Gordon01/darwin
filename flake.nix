@@ -19,11 +19,16 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      inputs.import-tree [
-        ./modules
-        ./darwin
-        ./home
-      ]
-    );
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+
+      imports = [
+        inputs.flake-parts.flakeModules.flakeModules
+
+        (inputs.import-tree [
+          ./modules
+          ./darwin
+          ./home
+        ])
+      ];
+    };
 }

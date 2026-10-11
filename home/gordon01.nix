@@ -14,6 +14,7 @@
       imports = [
         self.homeModules.common
         self.homeModules.dev
+        self.homeModules.shell
       ];
 
       home.username = lib.mkDefault "alex";
@@ -23,6 +24,11 @@
         package = pkgs.ghostty-bin;
         enableZshIntegration = true;
       };
+    };
+
+    shell = { ... }: {
+      # TODO make it usable
+      # nix-index-database.comma.enable = true;
     };
 
     dev = { pkgs, ... }: {

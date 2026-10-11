@@ -12,19 +12,16 @@
           git
         ];
 
+        security.pam.services.sudo_local.touchIdAuth = true;
+        home-manager.users.alex = self.homeModules.gordon01;
+        users.users.alex.home = "/Users/alex";
+
         # Nix is managed outside nix-darwin by Determinate Nix installer.
         nix.enable = false;
-
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-
         # Keep this unchanged unless intentionally migrating nix-darwin state.
         system.stateVersion = 6;
-
+        system.configurationRevision = self.rev or self.dirtyRev or null;
         nixpkgs.hostPlatform = "aarch64-darwin";
-
-        home-manager.users.alex = self.homeModules.gordon01;
-
-        users.users.alex.home = "/Users/alex";
       })
     ];
   };
