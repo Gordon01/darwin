@@ -10,7 +10,7 @@
       home.stateVersion = "26.11";
     };
 
-    gordon01 = { lib, ... }: {
+    gordon01 = { lib, pkgs, ... }: {
       imports = [
         self.homeModules.common
         self.homeModules.dev
@@ -18,6 +18,11 @@
 
       home.username = lib.mkDefault "alex";
       home.homeDirectory = lib.mkDefault "/Users/alex";
+      programs.ghostty = {
+        enable = true;
+        package = pkgs.ghostty-bin;
+        enableZshIntegration = true;
+      };
     };
 
     dev = { pkgs, ... }: {
