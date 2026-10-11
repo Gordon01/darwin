@@ -27,8 +27,8 @@
     };
 
     shell = { ... }: {
-      # TODO make it usable
-      # nix-index-database.comma.enable = true;
+      imports = [ inputs.nix-index-database.homeModules.nix-index ];
+      programs.nix-index-database.comma.enable = true;
     };
 
     dev = { pkgs, ... }: {
