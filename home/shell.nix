@@ -56,6 +56,19 @@
           enable = true;
           enableTelevisionIntegration = true;
         };
+
+        opencode = {
+          enable = true;
+          settings = {
+            model = "mlx/mlx-community/Qwen3-8B-4bit";
+            provider.mlx = {
+              npm = "@ai-sdk/openai-compatible";
+              name = "MLX LM Server";
+              options.baseURL = "http://127.0.0.1:8080/v1";
+              models."mlx-community/Qwen3-8B-4bit".name = "Qwen3 8B (4-bit)";
+            };
+          };
+        };
       };
     };
 }
