@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -33,7 +37,10 @@
         (inputs.import-tree [
           ./darwin
           ./home
+          ./modules
         ])
       ];
+
+      systems = [ "aarch64-darwin" ];
     };
 }
