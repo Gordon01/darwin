@@ -2,6 +2,7 @@
 {
   flake.darwinConfigurations."Gordon01-MB" = inputs.nix-darwin.lib.darwinSystem {
     modules = [
+      self.modules.darwin.gui
       ({ pkgs, ... }: {
         imports = [ inputs.home-manager.darwinModules.home-manager ];
 

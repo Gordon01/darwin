@@ -28,6 +28,7 @@
 
       imports = [
         inputs.flake-parts.flakeModules.flakeModules
+        inputs.nix-darwin.flakeModules.default
 
         (inputs.import-tree [
           ./darwin
