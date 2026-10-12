@@ -13,6 +13,8 @@
         ];
 
         security.pam.services.sudo_local.touchIdAuth = true;
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
         home-manager.users.alex = self.homeModules.gordon01;
         users.users.alex.home = "/Users/alex";
 

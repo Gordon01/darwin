@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "nix-darwin configuration for Gordon01-MB";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -30,7 +30,6 @@
         inputs.flake-parts.flakeModules.flakeModules
 
         (inputs.import-tree [
-          ./modules
           ./darwin
           ./home
         ])
