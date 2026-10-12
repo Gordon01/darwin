@@ -10,7 +10,7 @@
       home.stateVersion = "26.11";
     };
 
-    gordon01 = { lib, pkgs, ... }: {
+    gordon01 = { lib, ... }: {
       imports = [
         self.homeModules.common
         self.homeModules.dev
@@ -19,16 +19,6 @@
 
       home.username = lib.mkDefault "alex";
       home.homeDirectory = lib.mkDefault "/Users/alex";
-      programs.ghostty = {
-        enable = true;
-        package = pkgs.ghostty-bin;
-        enableZshIntegration = true;
-      };
-    };
-
-    shell = { ... }: {
-      imports = [ inputs.nix-index-database.homeModules.nix-index ];
-      programs.nix-index-database.comma.enable = true;
     };
 
     dev = { pkgs, ... }: {
@@ -38,14 +28,6 @@
       ];
 
       programs = {
-        starship = {
-          enable = true;
-          enableZshIntegration = true;
-        };
-        direnv = {
-          enable = true;
-          enableZshIntegration = true;
-        };
         git.enable = true;
         git.settings.user = {
           name = "Alexander Sergeev";
@@ -56,19 +38,6 @@
           mouse = true;
           newSession = true;
           secureSocket = true;
-        };
-        zsh = {
-          enable = true;
-          enableCompletion = true;
-          autosuggestion.enable = true;
-          syntaxHighlighting.enable = true;
-        };
-        fzf = {
-          enable = true;
-          defaultOptions = [
-            "--height 40%"
-            "--border rounded"
-          ];
         };
       };
     };
