@@ -6,21 +6,18 @@
       imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
       programs = {
-        direnv = {
-          enable = true;
-          enableZshIntegration = true;
-        };
         ghostty = {
           enable = true;
           package = pkgs.ghostty-bin;
           enableZshIntegration = true;
         };
         nix-index-database.comma.enable = true;
-        starship = {
+
+        direnv = {
           enable = true;
           enableZshIntegration = true;
         };
-        television = {
+        starship = {
           enable = true;
           enableZshIntegration = true;
         };
@@ -29,6 +26,15 @@
           enableCompletion = true;
           autosuggestion.enable = true;
           syntaxHighlighting.enable = true;
+        };
+
+        television = {
+          enable = true;
+          enableZshIntegration = true;
+        };
+        nix-search-tv = {
+          enable = true;
+          enableTelevisionIntegration = true;
         };
       };
     };
