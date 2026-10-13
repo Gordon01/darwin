@@ -60,12 +60,16 @@
         opencode = {
           enable = true;
           settings = {
-            model = "mlx/mlx-community/Qwen3-8B-4bit";
+            model = "mlx/mlx-community/Qwen3-Coder-Next-4bit";
             provider.mlx = {
               npm = "@ai-sdk/openai-compatible";
-              name = "MLX LM Server";
+              name = "MacBook";
               options.baseURL = "http://127.0.0.1:8080/v1";
-              models."mlx-community/Qwen3-8B-4bit".name = "Qwen3 8B (4-bit)";
+              models = {
+                "mlx-community/Qwen3-Coder-Next-4bit".name = "Qwen3-Coder-Next";
+                "mlx-community/Qwen3.5-REAP-97B-A10B-4bit".name = "Qwen3.5-REAP-97B";
+                "mlx-community/Laguna-S-2.1-OptiQ-2bit".name = "Laguna-S-2.1-OptiQ";
+              };
             };
           };
         };
