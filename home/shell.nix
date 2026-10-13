@@ -42,7 +42,7 @@
             "-m"
             "mlx_lm.server"
             "--model"
-            "mlx-community/Qwen3-8B-4bit"
+            "mlx-community/Qwen3.5-REAP-97B-A10B-4bit"
           ];
           RunAtLoad = false;
           KeepAlive = false;
