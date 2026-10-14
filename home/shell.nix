@@ -26,6 +26,10 @@
           enableCompletion = true;
           autosuggestion.enable = true;
           syntaxHighlighting.enable = true;
+          shellAliases = {
+            mlx-lm-start = "launchctl kickstart gui/$(id -u)/com.alex.mlx-lm-server";
+            mlx-lm-stop = "launchctl kill SIGTERM gui/$(id -u)/com.alex.mlx-lm-server";
+          };
         };
 
         television = {
