@@ -34,14 +34,12 @@
             mlx-lm-stop = "launchctl kill SIGTERM gui/$(id -u)/com.alex.mlx-lm-server";
           };
         };
-
-        television = {
+        fzf = {
           enable = true;
-          enableZshIntegration = true;
-        };
-        nix-search-tv = {
-          enable = true;
-          enableTelevisionIntegration = true;
+          defaultOptions = [
+            "--height 40%"
+            "--border rounded"
+          ];
         };
       };
     };
