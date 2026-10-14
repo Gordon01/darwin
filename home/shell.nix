@@ -26,13 +26,6 @@
           enableCompletion = true;
           autosuggestion.enable = true;
           syntaxHighlighting.enable = true;
-          shellAliases = {
-            open-webui-server = "open-webui serve --host 127.0.0.1 --port 3000";
-            open-webui-start = "launchctl kickstart gui/$(id -u)/com.alex.open-webui";
-            open-webui-stop = "launchctl kill SIGTERM gui/$(id -u)/com.alex.open-webui";
-            mlx-lm-start = "launchctl kickstart gui/$(id -u)/com.alex.mlx-lm-server";
-            mlx-lm-stop = "launchctl kill SIGTERM gui/$(id -u)/com.alex.mlx-lm-server";
-          };
         };
         fzf = {
           enable = true;
