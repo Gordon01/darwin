@@ -6,20 +6,18 @@
   };
 
   flake.homeModules = {
-    common = { ... }: {
-      home.stateVersion = "26.11";
-    };
-
-    gordon01 = { lib, ... }: {
+    gordon01 = { lib, pkgs, ... }: {
       imports = [
-        self.homeModules.common
         self.homeModules.dev
         self.homeModules.ai
         self.homeModules.shell
       ];
 
+      home.stateVersion = "26.11";
       home.username = lib.mkDefault "alex";
       home.homeDirectory = lib.mkDefault "/Users/alex";
+
+      home.packages = [ pkgs.home-manager ];
     };
 
     dev = { pkgs, ... }: {

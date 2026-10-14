@@ -17,6 +17,19 @@ To apply the configuration, run:
 sudo env NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --flake . --impure
 ```
 
+## Home Manager
+
+Home Manager is included in the `gordon01` user profile. From the repository
+root, first apply the nix-darwin configuration above to install the
+`home-manager` command, then apply the standalone Home Manager configuration
+without `sudo`:
+
+```sh
+NIXPKGS_ALLOW_UNFREE=1 home-manager switch --flake .#gordon01 --impure
+```
+
+For Home Manager generation inspection and rollback, see [AGENTS.md](./AGENTS.md).
+
 ## Open WebUI
 
 Open WebUI runs automatically as a launch agent after applying the
