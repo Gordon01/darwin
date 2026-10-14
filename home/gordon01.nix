@@ -14,6 +14,7 @@
       imports = [
         self.homeModules.common
         self.homeModules.dev
+        self.homeModules.ai
         self.homeModules.shell
       ];
 
