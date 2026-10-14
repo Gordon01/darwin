@@ -1,8 +1,29 @@
 { ... }:
 {
   flake.homeModules.ai =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      ...
+    }:
     let
+      openWebui = pkgs.writeShellApplication {
+        name = "open-webui";
+        runtimeInputs = [ pkgs.open-webui ];
+        runtimeEnv = {
+          HOME = "${config.home.homeDirectory}/.local/share/open-webui";
+          DATA_DIR = "${config.home.homeDirectory}/.local/share/open-webui/data";
+          STATIC_DIR = "${config.home.homeDirectory}/.local/share/open-webui/static";
+          HF_HOME = "${config.home.homeDirectory}/.local/share/open-webui/hf_home";
+          SENTENCE_TRANSFORMERS_HOME = "${config.home.homeDirectory}/.local/share/open-webui/transformers_home";
+          WEBUI_URL = "http://localhost:3000";
+        };
+        text = ''
+          mkdir -p "$DATA_DIR" "$STATIC_DIR"
+          cd "$HOME"
+          exec ${pkgs.open-webui}/bin/open-webui "$@"
+        '';
+      };
       pythonMlx = pkgs.writeShellApplication {
         name = "python-mlx";
         runtimeInputs = [
@@ -29,10 +50,29 @@
     in
     {
       home.packages = [
-        pkgs.open-webui
+        openWebui
         pythonMlx
         mlxLmServer
       ];
+
+      launchd.agents.open-webui = {
+        enable = true;
+        config = {
+          Label = "com.alex.open-webui";
+          ProgramArguments = [
+            "${openWebui}/bin/open-webui"
+            "serve"
+            "--host"
+            "127.0.0.1"
+            "--port"
+            "3000"
+          ];
+          RunAtLoad = true;
+          KeepAlive = false;
+          StandardOutPath = "${config.home.homeDirectory}/Library/Logs/open-webui.log";
+          StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/open-webui.log";
+        };
+      };
 
       launchd.agents.mlx-lm-server = {
         enable = true;
