@@ -24,12 +24,13 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fast-sync.url = "github:Gordon01/fast-sync";
   };
 
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-
       imports = [
         inputs.flake-parts.flakeModules.flakeModules
         inputs.home-manager.flakeModules.home-manager
@@ -39,6 +40,7 @@
           ./darwin
           ./home
           ./modules
+          ./pkgs
         ])
       ];
 
