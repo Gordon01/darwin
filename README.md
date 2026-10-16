@@ -1,59 +1,12 @@
-# nix-darwin
+# ftdpkgs
 
-## Quick start
+This repository consolidates all of my computer experience into a single, ready-to-use setup. Thanks to the Nix package manager, everything is portable and will continue to work for many years.
 
-Build the configuration for this Mac:
+It is like another Awesome list tailored to me and my friends.
 
-```sh
-NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild build --flake .#Gordon01-MB --impure
-```
+It contains:
 
-The unfree opt-in is needed for `open-webui`; `--impure` allows Nix to read the
-environment variable when evaluating the flake.
-
-To apply the configuration, run:
-
-```sh
-sudo env NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --flake . --impure
-```
-
-## Home Manager
-
-Home Manager is included in the `gordon01` user profile. From the repository
-root, first apply the nix-darwin configuration above to install the
-`home-manager` command, then apply the standalone Home Manager configuration
-without `sudo`:
-
-```sh
-NIXPKGS_ALLOW_UNFREE=1 home-manager switch --flake .#gordon01 --impure
-```
-
-For Home Manager generation inspection and rollback, see [AGENTS.md](./AGENTS.md).
-
-## Open WebUI
-
-Open WebUI runs automatically as a launch agent after applying the
-configuration. Open <http://127.0.0.1:3000> in a browser. Its data and static
-files are stored in `~/.local/share/open-webui`.
-
-The service logs to `~/Library/Logs/open-webui.log`.
-The `open-webui` command is the nixpkgs binary with the persistent data
-environment configured; use `open-webui-server` to run the server manually.
-
-Use these aliases to stop and restart it:
-
-```sh
-open-webui-stop
-open-webui-start
-```
-
-## MLX language model server
-
-The launch agent is loaded but does not start automatically. Use these aliases:
-
-```sh
-mlx-lm-start
-mlx-lm-stop
-```
-
-To run it in the foreground instead, use `mlx-lm-server` and stop with Ctrl-C.
+- links to my other repos and re-exported binaries from them
+- configuration for my NixOS machines
+- configuration for my macOS machines
+- reusable `flake-parts` modules
